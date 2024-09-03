@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos JavaScript</title>
+    <script>
+        // Função para verificar se um número pertence à sequência de Fibonacci
+        function pertenceFibonacci(num) {
+            if (num < 0) return false;  // Fibonacci não inclui números negativos
+
+            let a = 0, b = 1;
+
+            while (a < num) {
+                let temp = a;
+                a = b;
+                b = temp + b;
+            }
+
+            return a === num;
+        }
+
+        // Função para contar a quantidade de letras 'a' em uma string
+        function contarLetraA(s) {
+            const conteudo = s.toLowerCase();  // Converte a string para minúsculas
+            const quantidade = (conteudo.match(/a/g) || []).length;  // Conta ocorrências da letra 'a'
+            return quantidade;
+        }
+
+        // Função para executar o código de soma com loop
+        function calcularSoma() {
+            let indice = 12;
+            let soma = 0;
+            let k = 1;
+
+            while (k < indice) {
+                k += 1;
+                soma += k;
+            }
+
+            return soma;
+        }
+
+        // Função principal para executar as interações
+        function executar() {
+            // Parte 1: Verificar se um número pertence à sequência de Fibonacci
+            const numero = parseInt(prompt("Informe um número para verificar se pertence à sequência de Fibonacci: "), 10);
+            if (isNaN(numero)) {
+                console.log("Por favor, informe um número inteiro válido.");
+            } else if (pertenceFibonacci(numero)) {
+                console.log(`O número ${numero} pertence à sequência de Fibonacci.`);
+            } else {
+                console.log(`O número ${numero} não pertence à sequência de Fibonacci.`);
+            }
+
+            // Parte 2: Contar a quantidade de letras 'a' em uma string
+            const stringUsuario = prompt("Digite uma string para verificar a presença da letra 'a': ");
+            const quantidadeA = contarLetraA(stringUsuario);
+            if (quantidadeA > 0) {
+                console.log(`A letra 'a' aparece ${quantidadeA} vez(es) na string.`);
+            } else {
+                console.log("A letra 'a' não está presente na string.");
+            }
+
+            // Parte 3: Calcular a soma usando o código fornecido
+            const soma = calcularSoma();
+            console.log(`O resultado da soma é ${soma}.`);
+        }
+    </script>
+</head>
+<body onload="executar()">
+    <h1>Verificação de Fibonacci, Contagem de Letras e Soma com Loop</h1>
+    <p>Abra o console para ver os resultados dos exemplos.</p>
+</body>
+</html>
